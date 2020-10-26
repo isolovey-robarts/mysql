@@ -40,10 +40,11 @@ myisam-recover          = {{ mysql_myisam_recover }}
 thread_concurrency      = {{ mysql_thread_concurrency }}
 {% endif %}
 
+{% if mysql_cli_version.stdout is version('8.0', '<') %}
 # ** Query Cache Configuration
 query_cache_limit       = {{ mysql_query_cache_limit }}
 query_cache_size        = {{ mysql_query_cache_size }}
-
+{% endif %}
 # ** Logging and Replication
 #general_log_file        = /var/log/mysql/mysql.log
 #general_log             = 1
